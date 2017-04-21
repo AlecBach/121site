@@ -11,7 +11,7 @@
             <h1>{{$artist['name']}}</h1>
             <h2>{{$artist['hometown']}}</h2>
             <div class="artistMask"></div>
-            <div class="artistImage" style="background-image: url(../imgs/artists/{{$artist['image_url']}})"></div>
+            <div class="artistImage" style="background-image: url(..{{$artist['image_url']}})"></div>
         </div></a>
         @endforeach
         <a href=""><div class="artistItem">

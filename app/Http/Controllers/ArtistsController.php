@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Artist;
+// import the Intervention Image Manager Class
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ArtistsController extends Controller
 {
@@ -17,7 +19,7 @@ class ArtistsController extends Controller
     {
         //get all artists
 
-        $artists = App\Artist::all();
+        $artists = Artist::all();
 
         return view('artists', compact('artists'));
     }
@@ -49,6 +51,21 @@ class ArtistsController extends Controller
         
         $artist = new Artist;
 
+        $artist->name = request('name');
+        $artist->genre = request('genre');
+        $artist->hometown = request('hometown');
+        $artist->description = request('description');
+
+        //Process Image
+        $img = Image::make(request('image'))->fit(500);
+        $imgName = "/imgs/artists/".uniqid().".jpg";
+        $img->save(public_path().$imgName);
+
+        $artist->image_url = $imgName;
+
+        $artist->save();
+        redirect("/");
+
     }
 
     /**
@@ -59,7 +76,7 @@ class ArtistsController extends Controller
      */
     public function show($id)
     {
-        $artist = App\Artist::find($id);
+        $artist = Artist::find($id);
         
         return view('artists.show', compact('artist'));
     }

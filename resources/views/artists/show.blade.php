@@ -9,7 +9,7 @@
     <div id="artistShow">
         <div class="artistItem">
             <div class="half left">
-                <div class="artistImage" style="background-image: url(../imgs/artists/sample.jpeg{{$artist['image_url']}})"><div class="backBtn"><a href="/artists">Back to artists</a></div></div>
+                <div class="artistImage" style="background-image: url(..{{$artist['image_url']}})"><div class="backBtn"><a href="/artists">Back to artists</a></div></div>
             </div>{{-- 
              --}}<div class="half right">
                  <div class="txtCnt">
