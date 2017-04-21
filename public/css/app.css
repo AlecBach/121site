@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -5327,7 +5326,367 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
-.navBar {
+body {
+  overflow-x: hidden; }
+
+#navBar {
   width: 100%;
-  height: 70px;
-  background-color: rgba(0, 0, 0, 0.4); }
+  position: fixed;
+  top: 0;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  height: 230px;
+  left: 0;
+  border: 1px solid rgba(255, 255, 0, 0);
+  transition: height 0.5s, border-bottom-color 0.5s, background-color 0.5s, padding-top 0.5s, padding-bottom 0.5s; }
+  #navBar > .center {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+    #navBar > .center > div ul {
+      list-style: none;
+      margin: 0; }
+      #navBar > .center > div ul li {
+        font-family: 'montserrat';
+        display: inline-block;
+        font-size: 2em;
+        padding: 2px 10px; }
+        #navBar > .center > div ul li a {
+          color: white;
+          transition: color 0.3s; }
+        #navBar > .center > div ul li a:hover {
+          text-decoration: none;
+          color: yellow; }
+      #navBar > .center > div ul li:last-child {
+        padding-right: 0; }
+  #navBar .active {
+    color: yellow !important; }
+  #navBar #nav {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    #navBar #nav > ul {
+      -webkit-align-self: center;
+      -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center; }
+
+#pageID {
+  display: none;
+  opacity: 0;
+  visibility: hidden; }
+
+.static {
+  position: static !important; }
+
+.navScrolled {
+  padding-top: 0 !important;
+  height: 112px !important;
+  border-bottom: 1px solid yellow !important;
+  background-color: #111111 !important; }
+
+.logoScrolled {
+  width: 100px !important; }
+
+.center {
+  width: 90%;
+  margin: 0 auto; }
+
+#logo {
+  width: 150px;
+  transition: width 0.5s;
+  padding: 15px 0; }
+  #logo > svg {
+    display: block; }
+  #logo .st0, #logo path {
+    stroke: white;
+    fill: white;
+    transition: stroke 0.3s, fill 0.3s; }
+
+#logo:hover .st0, #logo:hover path {
+  stroke: yellow;
+  fill: yellow; }
+
+.fullV {
+  width: 100vw;
+  min-height: 100vh; }
+
+#getVH {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  opacity: 0; }
+
+#homeHero {
+  background-image: url(../imgs/darkrave.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+#homeSection2 {
+  background-image: url(../imgs/ignasi_pattern_s.png); }
+  #homeSection2 > .center {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    #homeSection2 > .center > * {
+      -webkit-align-self: center;
+      -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center; }
+
+.footer {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  .footer .footerquarter {
+    background-color: black;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 25%;
+    height: 100%;
+    margin: 0;
+    box-sizing: border-box; }
+  .footer #quarter2.footerquarter {
+    background-color: #161616; }
+  .footer #quarter3.footerquarter {
+    background-color: #1e1e1e; }
+  .footer #quarter4.footerquarter {
+    background-color: #2d2d2d; }
+  .footer i {
+    font-size: 30px;
+    transition: color 0.3s; }
+  .footer i:hover {
+    color: white; }
+  .footer a {
+    color: #636b6f;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center; }
+
+#floatingFooter {
+  height: 65px;
+  z-index: 4;
+  position: fixed;
+  bottom: 0;
+  left: 0; }
+
+#staticFooter {
+  height: 200px;
+  z-index: 1; }
+
+.container {
+  margin: 60px auto; }
+
+#artistCont {
+  width: 100%;
+  background-color: #202020;
+  overflow: auto; }
+  #artistCont > a, #artistCont .artistItem {
+    width: 50%;
+    height: 50vw;
+    transition: width 0.3s, height 0.3s;
+    display: inline-block;
+    float: left; }
+  #artistCont .artistItem {
+    width: 100%;
+    height: 100%;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    position: relative;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    #artistCont .artistItem h1, #artistCont .artistItem h2 {
+      z-index: 2;
+      text-align: center;
+      -webkit-align-self: center;
+      -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+      margin: 0;
+      max-width: 95%; }
+    #artistCont .artistItem h1 {
+      font-size: 1.9em;
+      margin: 37px 0 3px;
+      font-family: 'montserrat';
+      color: white;
+      text-transform: uppercase;
+      font-weight: bold; }
+    #artistCont .artistItem h2 {
+      font-size: 1.2em;
+      font-family: 'Open Sans', sans-serif;
+      color: #999; }
+    #artistCont .artistItem .artistImage, #artistCont .artistItem .artistMask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0; }
+    #artistCont .artistItem .artistImage {
+      background-position: center;
+      background-size: cover;
+      background-image: url(../imgs/artists/sample.jpeg); }
+    #artistCont .artistItem .artistMask {
+      z-index: 1;
+      background-color: rgba(255, 255, 0, 0);
+      transition: background-color 0.8s ease-out; }
+  #artistCont > a:hover {
+    text-decoration: none; }
+    #artistCont > a:hover .artistMask {
+      background-color: yellow; }
+    #artistCont > a:hover .addMask {
+      background-color: lime; }
+  #artistCont .addArtist h1 {
+    font-size: 3em;
+    color: white;
+    margin: 0; }
+  #artistCont .addArtist h2 {
+    font-size: 2em;
+    font-family: 'montserrat';
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white; }
+  #artistCont .addArtist .addMask {
+    z-index: 1;
+    background-color: #00be00;
+    transition: background-color 0.8s ease-out; }
+
+#artistShow {
+  padding: 40px 0;
+  width: 100%; }
+  #artistShow .artistItem {
+    width: 100%; }
+    #artistShow .artistItem .half {
+      width: 100%;
+      display: block; }
+      #artistShow .artistItem .half .artistImage {
+        width: 100%;
+        height: 87vw;
+        background-position: center;
+        background-size: cover; }
+        #artistShow .artistItem .half .artistImage .backBtn {
+          position: relative;
+          top: 5px;
+          left: -5px; }
+          #artistShow .artistItem .half .artistImage .backBtn a {
+            color: black;
+            padding: 4px 6px;
+            padding-left: 12px;
+            background-color: white;
+            opacity: 0.4;
+            transition: opacity 0.3s; }
+          #artistShow .artistItem .half .artistImage .backBtn a:hover {
+            opacity: 1;
+            text-decoration: none; }
+    #artistShow .artistItem .right hr {
+      border-color: #999;
+      margin: 8px 0; }
+    #artistShow .artistItem .right .txtCnt {
+      margin-top: 15px; }
+      #artistShow .artistItem .right .txtCnt > * {
+        display: block; }
+      #artistShow .artistItem .right .txtCnt h1, #artistShow .artistItem .right .txtCnt h2, #artistShow .artistItem .right .txtCnt h3, #artistShow .artistItem .right .txtCnt p {
+        margin: 0; }
+      #artistShow .artistItem .right .txtCnt h1 {
+        font-family: 'montserrat';
+        text-transform: uppercase;
+        font-weight: bolder;
+        color: #363636; }
+      #artistShow .artistItem .right .txtCnt h3 {
+        font-size: 1.3em;
+        color: #363636;
+        text-align: right; }
+      #artistShow .artistItem .right .txtCnt p {
+        font-size: 1em; }
+
+#artistPage {
+  background-image: url(../imgs/artists/ep_naturalwhite.png); }
+
+@media screen and (min-width: 720px) {
+  .center {
+    width: 700px;
+    margin: 0 auto; }
+  #artistShow .artistItem {
+    height: 350px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row; }
+    #artistShow .artistItem .half {
+      -webkit-align-self: center;
+      -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+      width: 50%;
+      display: inline-block;
+      float: left; }
+      #artistShow .artistItem .half .artistImage {
+        width: 350px;
+        height: 350px; }
+    #artistShow .artistItem .right .txtCnt {
+      margin-top: 0;
+      padding-left: 10px; }
+      #artistShow .artistItem .right .txtCnt > * {
+        display: block; }
+      #artistShow .artistItem .right .txtCnt h1, #artistShow .artistItem .right .txtCnt h2, #artistShow .artistItem .right .txtCnt h3, #artistShow .artistItem .right .txtCnt p {
+        margin: 0; }
+      #artistShow .artistItem .right .txtCnt h1 {
+        font-family: 'montserrat';
+        text-transform: uppercase;
+        font-weight: bolder; }
+      #artistShow .artistItem .right .txtCnt h3 {
+        font-size: 1.3em;
+        text-align: right; }
+      #artistShow .artistItem .right .txtCnt p {
+        font-size: 1em; } }
+
+@media screen and (min-width: 1020px) {
+  .center {
+    width: 1000px;
+    margin: 0 auto; }
+  #artistCont > a {
+    width: 25%;
+    height: 25vw; }
+  #artistShow .artistItem {
+    height: 500px; }
+    #artistShow .artistItem .half .artistImage {
+      width: 500px;
+      height: 500px; } }
