@@ -17,6 +17,7 @@ class CreateArtistsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('genre');
+            $table->string('hometown');
             $table->text('description');
             $table->string('image_url');
         });

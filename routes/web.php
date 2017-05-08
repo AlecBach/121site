@@ -29,11 +29,25 @@ Route::get('/upcoming', 'EventsController@upcoming');
 
 Route::get('/past', 'EventsController@past');
 
+Route::post('/events/store', 'EventsController@store');
+
+Route::get('/events/add', 'EventsController@create');
+
+Route::get('/events/{event}', 'EventsController@show');
+
+Route::get('/events/delete/{event}', 'EventsController@destroy');
+
 Route::get('/artists', 'ArtistsController@index');
 
-Route::post('/artists', 'ArtistsController@store');
+Route::post('/artists/store', 'ArtistsController@store');
 
 Route::get('/artists/add', 'ArtistsController@create');
+
+Route::get('/artists/edit/{artist}', 'ArtistsController@edit');
+
+Route::post('/artists/update/{artist}', 'ArtistsController@update');
+
+Route::get('/artists/delete/{artist}', 'ArtistsController@destroy');
 
 Route::get('/artists/{artist}', 'ArtistsController@show');
 

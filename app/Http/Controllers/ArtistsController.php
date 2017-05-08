@@ -64,8 +64,8 @@ class ArtistsController extends Controller
         $artist->image_url = $imgName;
 
         $artist->save();
-        redirect("/");
-
+        
+        return redirect('artists');
     }
 
     /**
@@ -89,7 +89,9 @@ class ArtistsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $artist = Artist::find($id);
+
+        return view('artists.edit', compact('artist'));
     }
 
     /**
@@ -101,7 +103,26 @@ class ArtistsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $artist = Artist::find($id);
+
+        $artist->name = request('name');
+        $artist->genre = request('genre');
+        $artist->hometown = request('hometown');
+        $artist->description = request('description');
+
+        //Process Image
+        if (request('image')) {
+            $img = Image::make(request('image'))->fit(500);
+            $imgName = "/imgs/artists/".uniqid().".jpg";
+            $img->save(public_path().$imgName);
+
+            $artist->image_url = $imgName;
+        }
+        
+
+        $artist->save();
+
+        return redirect('artists');
     }
 
     /**
@@ -112,6 +133,10 @@ class ArtistsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $artist = Artist::find($id);
+
+        $artist->delete();
+
+        return redirect('artists');
     }
 }

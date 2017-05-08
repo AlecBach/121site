@@ -1,0 +1,223 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>README.md</title>
+      </head>
+      <body>
+        <p><a href="https://npmjs.org/package/remodal"><img src="https://img.shields.io/npm/v/remodal.svg?style=flat" alt="NPM version"></a>
+<a href="http://badge.fury.io/bo/remodal"><img src="https://badge.fury.io/bo/remodal.svg" alt="Bower version"></a>
+<a href="https://travis-ci.org/VodkaBears/Remodal"><img src="https://travis-ci.org/VodkaBears/Remodal.svg?branch=master" alt="Travis"></a></p>
+<h1 id="remodal">Remodal</h1>
+<p><strong>No longer actively maintained. I am not interested to maintain jQuery plugins anymore. If you have some fixes, feel free to make PR.</strong></p>
+<p>Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.</p>
+<p><img src="https://raw.githubusercontent.com/VodkaBears/vodkabears.github.com/master/remodal/remodal.png" alt="logo"></p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>All modern browsers are supported.</li>
+<li>IE8+. To enable IE8 styles add the <code>lt-ie9</code> class to the <code>html</code> element, as modernizr does.</li>
+<li>jQuery, jQuery2, Zepto support.</li>
+<li>Browserify support.</li>
+</ul>
+<h2 id="start">Start</h2>
+<p>Download the latest version from <a href="https://github.com/VodkaBears/Remodal/releases/latest">GitHub</a> or via package managers:</p>
+<pre><code>npm install remodal
+bower install remodal
+</code></pre><p>Include the CSS files from the dist folder in the head section:</p>
+<pre><code class="lang-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;../dist/remodal.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../dist/remodal-default-theme.css&quot;&gt;
+</code></pre>
+<p>Include the JS file from the dist folder before the <code>&lt;/body&gt;</code>:</p>
+<pre><code class="lang-html">&lt;script src=&quot;../dist/remodal.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>You can define the background container for the modal(for effects like a blur). It can be any simple content wrapper:</p>
+<pre><code class="lang-html">&lt;div class=&quot;remodal-bg&quot;&gt;
+...Page content...
+&lt;/div&gt;
+</code></pre>
+<p>And now create the modal dialog:</p>
+<pre><code class="lang-html">&lt;div class=&quot;remodal&quot; data-remodal-id=&quot;modal&quot;&gt;
+  &lt;button data-remodal-action=&quot;close&quot; class=&quot;remodal-close&quot;&gt;&lt;/button&gt;
+  &lt;h1&gt;Remodal&lt;/h1&gt;
+  &lt;p&gt;
+    Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.
+  &lt;/p&gt;
+  &lt;br&gt;
+  &lt;button data-remodal-action=&quot;cancel&quot; class=&quot;remodal-cancel&quot;&gt;Cancel&lt;/button&gt;
+  &lt;button data-remodal-action=&quot;confirm&quot; class=&quot;remodal-confirm&quot;&gt;OK&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Don&#39;t use the <code>id</code> attribute, if you want to avoid the anchor jump, use <code>data-remodal-id</code>.</p>
+<p>So, now you can call it with the hash:</p>
+<pre><code class="lang-html">&lt;a href=&quot;#modal&quot;&gt;Call the modal with data-remodal-id=&quot;modal&quot;&lt;/a&gt;
+</code></pre>
+<p>Or:</p>
+<pre><code class="lang-html">&lt;a data-remodal-target=&quot;modal&quot;&gt;Call the modal with data-remodal-id=&quot;modal&quot;&lt;/a&gt;
+</code></pre>
+<h2 id="options">Options</h2>
+<p>You can pass additional options with the <code>data-remodal-options</code> attribute.</p>
+<pre><code class="lang-html">&lt;div class=&quot;remodal&quot; data-remodal-id=&quot;modal&quot;
+  data-remodal-options=&quot;hashTracking: false, closeOnOutsideClick: false&quot;&gt;
+
+  &lt;button data-remodal-action=&quot;close&quot; class=&quot;remodal-close&quot;&gt;&lt;/button&gt;
+  &lt;h1&gt;Remodal&lt;/h1&gt;
+  &lt;p&gt;
+    Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.
+  &lt;/p&gt;
+  &lt;br&gt;
+  &lt;button data-remodal-action=&quot;cancel&quot; class=&quot;remodal-cancel&quot;&gt;Cancel&lt;/button&gt;
+  &lt;button data-remodal-action=&quot;confirm&quot; class=&quot;remodal-confirm&quot;&gt;OK&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<h4 id="hashtracking">hashTracking</h4>
+<p><code>Default: true</code></p>
+<p>To open the modal without the hash, use the <code>data-remodal-target</code> attribute.</p>
+<pre><code class="lang-html">&lt;a data-remodal-target=&quot;modal&quot; href=&quot;#&quot;&gt;Call the modal with data-remodal-id=&quot;modal&quot;&lt;/a&gt;
+</code></pre>
+<h4 id="closeonconfirm">closeOnConfirm</h4>
+<p><code>Default: true</code></p>
+<p>If true, closes the modal window after clicking the confirm button.</p>
+<h4 id="closeoncancel">closeOnCancel</h4>
+<p><code>Default: true</code></p>
+<p>If true, closes the modal window after clicking the cancel button.</p>
+<h4 id="closeonescape">closeOnEscape</h4>
+<p><code>Default: true</code></p>
+<p>If true, closes the modal window after pressing the ESC key.</p>
+<h4 id="closeonoutsideclick">closeOnOutsideClick</h4>
+<p><code>Default: true</code></p>
+<p>If true, closes the modal window by clicking anywhere on the page.</p>
+<h4 id="modifier">modifier</h4>
+<p><code>Default: &#39;&#39;</code></p>
+<p>Modifier CSS classes for the modal that is added to the overlay, modal, background and wrapper (see <a href="#css">CSS</a>).</p>
+<h4 id="appendto">appendTo</h4>
+<p><code>Default: document.body</code></p>
+<h2 id="globals">Globals</h2>
+<pre><code class="lang-html">&lt;script&gt;
+window.REMODAL_GLOBALS = {
+  NAMESPACE: &#39;modal&#39;,
+  DEFAULTS: {
+    hashTracking: false
+  }
+};
+&lt;/script&gt;
+&lt;script src=&quot;../dist/remodal.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h4 id="namespace">NAMESPACE</h4>
+<p>Base HTML class for your modals. CSS theme should be updated to reflect this.</p>
+<h4 id="defaults">DEFAULTS</h4>
+<p>Extends the default settings.</p>
+<h2 id="initialization-with-javascript">Initialization with JavaScript</h2>
+<p>Do not set the &#39;remodal&#39; class, if you prefer a JS initialization.</p>
+<pre><code class="lang-html">&lt;div data-remodal-id=&quot;modal&quot;&gt;
+  &lt;button data-remodal-action=&quot;close&quot; class=&quot;remodal-close&quot;&gt;&lt;/button&gt;
+  &lt;h1&gt;Remodal&lt;/h1&gt;
+  &lt;p&gt;
+    Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var options = {...};
+
+    $(&#39;[data-remodal-id=modal]&#39;).remodal(options);
+&lt;/script&gt;
+</code></pre>
+<h2 id="methods">Methods</h2>
+<p>Get the instance of the modal and call a method:</p>
+<pre><code class="lang-js">var inst = $(&#39;[data-remodal-id=modal]&#39;).remodal();
+
+/**
+ * Opens the modal window
+ */
+inst.open();
+
+/**
+ * Closes the modal window
+ */
+inst.close();
+
+/**
+ * Returns a current state of the modal
+ * @returns {&#39;closed&#39;|&#39;closing&#39;|&#39;opened&#39;|&#39;opening&#39;}
+ */
+inst.getState();
+
+/**
+ * Destroys the modal window
+ */
+inst.destroy();
+</code></pre>
+<h2 id="events">Events</h2>
+<pre><code class="lang-js">$(document).on(&#39;opening&#39;, &#39;.remodal&#39;, function () {
+  console.log(&#39;Modal is opening&#39;);
+});
+
+$(document).on(&#39;opened&#39;, &#39;.remodal&#39;, function () {
+  console.log(&#39;Modal is opened&#39;);
+});
+
+$(document).on(&#39;closing&#39;, &#39;.remodal&#39;, function (e) {
+
+  // Reason: &#39;confirmation&#39;, &#39;cancellation&#39;
+  console.log(&#39;Modal is closing&#39; + (e.reason ? &#39;, reason: &#39; + e.reason : &#39;&#39;));
+});
+
+$(document).on(&#39;closed&#39;, &#39;.remodal&#39;, function (e) {
+
+  // Reason: &#39;confirmation&#39;, &#39;cancellation&#39;
+  console.log(&#39;Modal is closed&#39; + (e.reason ? &#39;, reason: &#39; + e.reason : &#39;&#39;));
+});
+
+$(document).on(&#39;confirmation&#39;, &#39;.remodal&#39;, function () {
+  console.log(&#39;Confirmation button is clicked&#39;);
+});
+
+$(document).on(&#39;cancellation&#39;, &#39;.remodal&#39;, function () {
+  console.log(&#39;Cancel button is clicked&#39;);
+});
+</code></pre>
+<h2 id="css">CSS</h2>
+<h4 id="classes">Classes</h4>
+<p><code>.remodal</code> – the default class of modal dialogs.</p>
+<p><code>.remodal-wrapper</code> – the additional wrapper for the <code>.remodal</code>, it is not the overlay and used for the alignment.</p>
+<p><code>.remodal-overlay</code> – the overlay of modal dialogs, it is under the wrapper.</p>
+<p><code>.remodal-bg</code> – the background of modal dialogs, it is under the overlay and usually it is the wrapper of your content. You should add it on your own.</p>
+<p>The <code>remodal</code> prefix can be changed in the global settings. See <a href="#namespace">the <code>NAMESPACE</code> option</a>.</p>
+<h4 id="states">States</h4>
+<p>States are added to the <code>.remodal</code>, <code>.remodal-overlay</code>, <code>.remodal-bg</code>, <code>.remodal-wrapper</code> classes.</p>
+<p>List:</p>
+<pre><code>.remodal-is-opening
+.remodal-is-opened
+.remodal-is-closing
+.remodal-is-closed
+</code></pre><h4 id="modifier">Modifier</h4>
+<p>A modifier that is specified in the <a href="#options">options</a> is added to the <code>.remodal</code>, <code>.remodal-overlay</code>, <code>.remodal-bg</code>, <code>.remodal-wrapper</code> classes.</p>
+<h2 id="using-with-other-javascript-libraries">Using with other javascript libraries</h2>
+<p>Remodal has wrappers that make it easy to use with other javascript libraries:</p>
+<h3 id="ember">Ember</h3>
+<ul>
+<li><a href="https://github.com/sethbrasile/ember-remodal">ember-remodal</a></li>
+</ul>
+<h2 id="license">License</h2>
+<pre><code>The MIT License (MIT)
+
+Copyright (c) 2015 Ilya Makarov
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</code></pre>
+      </body>
+    </html>

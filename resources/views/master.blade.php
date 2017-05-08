@@ -10,12 +10,15 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
         <!-- Styles -->
         <link rel="stylesheet" type="text/css" href="{{  URL::asset('css/app.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{  URL::asset('Remodal/dist/remodal.css') }}">
+        <link rel="stylesheet" href="{{  URL::asset('Remodal/dist/remodal-default-theme.css') }}">
+        @yield('css')
         
     </head>
     <body>
@@ -43,18 +46,91 @@
                 </div>
             </div> 
         </div>
-
+        <div class="remodal-bg">
         @yield('content')
+        </div>
+        <div class="remodal" data-remodal-id="contact">
+          <button data-remodal-action="close" class="remodal-close"></button>
+                    <form class="form-horizontal" role="form" method="POST" action="/contact">
+                        {{ csrf_field() }}
 
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Name</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="name" required autofocus>
+
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Email</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" required>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('number') ? ' has-error' : '' }}">
+                            <label for="number" class="col-md-4 control-label">Phone Number (optional)</label>
+
+                            <div class="col-md-6">
+                                <input id="number" type="number" class="form-control" name="number">
+
+                                @if ($errors->has('number'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
+                            <label for="message" class="col-md-4 control-label">Message</label>
+
+                            <div class="col-md-6">
+                                <textarea id="message" type="text" class="form-control" name="message" rows="10" required></textarea>
+
+                                @if ($errors->has('message'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('message') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin: 0 !important;">
+                            <div class="col-sm-12">
+                                <button type="submit" class="remodal-confirm">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+        </div>
         <div class="footer" id="floatingFooter">
-            <div class="footerquarter" id="quarter1"></div><div class="footerquarter" id="quarter2"></div><div class="footerquarter" id="quarter3"></div><div class="footerquarter" id="quarter4"><a href=""><i class="fa fa-envelope"></i></a></div>
+            <div class="footerquarter" id="quarter1"></div><div class="footerquarter" id="quarter2"></div><div class="footerquarter" id="quarter3"></div><div class="footerquarter" id="quarter4"><a href="#contact"><i class="fa fa-envelope"></i></a></div>
         </div>
         <div class="footer" id="staticFooter">
             <div class="footerquarter" id="quarter1"></div><div class="footerquarter" id="quarter2"></div><div class="footerquarter" id="quarter3"></div><div class="footerquarter" id="quarter4"></div>
         </div>
         <div id="pageID">@yield('pageID')</div>
         <div id="getVH"></div>
-        {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> --}}
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="{{ URL::asset('Remodal/dist/remodal.min.js') }}"></script>
+        <script src="{{ URL::asset('galleria/galleria-1.5.6.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
+        @yield('js')
     </body>
 </html>
