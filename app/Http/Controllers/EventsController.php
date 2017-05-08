@@ -245,7 +245,19 @@ class EventsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $event = Event::find($id);
+
+        if($event->images_array){
+            $imagesArray = array();
+            if(str_contains($event->images_array, ",!")){
+                $imagesArray = explode(",!", $event->images_array);
+            }else{
+                array_push($imagesArray, $event->images_array);
+            }
+            $event->images_array = $imagesArray;
+        }
+
+        return view('events.edit', compact('event'));
     }
 
     /**
@@ -257,7 +269,88 @@ class EventsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Event = Event::find($id);
+
+        $Event->name = request('name');
+
+        // $carbonDate Carbon::createFromFormat('m/d/Y H:M', '05/31/2017 10:53 PM')->toDateTimeString()
+        $carbonDate = Carbon::parse(request('date'));
+        $Event->date = $carbonDate;
+
+        $Event->description = request('description');
+
+        $Event->location_name = request('locationSearch');
+
+        $Event->location_id = request('location');
+        
+        if(request('image')){
+            $img = Image::make(request('image'));
+            $img->resize(1000, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            $imgName = "/imgs/events/".uniqid().".jpg";
+            $img->save(public_path().$imgName);
+            
+            $Event->image_url = $imgName;
+        }
+
+        $images = "";
+        if (request('images')) {
+            foreach (request('images') as $image) {
+                // var_dump($image);
+
+                $img = Image::make($image);
+                $img->resize(2000, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+                $imgName = "/imgs/events/gallery/".uniqid().".jpg";
+                $img->save(public_path().$imgName);
+
+                $images = $images.$imgName.",!";
+            };
+        }
+
+        if($Event->images_array){
+            $imagesArray = array();
+            if(str_contains($Event->images_array, ",!")){
+                $imagesArray = explode(",!", $Event->images_array);
+            }else{
+                array_push($imagesArray, $Event->images_array);
+            }
+            $Event->images_array = $imagesArray;
+        };
+        if(request('galleryImagesList') !== NULL){
+            $galleryImages = request('galleryImagesList');
+            $galleryImages = substr($galleryImages, 0, -1);
+            $galleryArray = explode(",", $galleryImages);
+            foreach ($galleryArray as $value) {
+                //Each image that has not been deleted is added on to the string/array..
+                $images = $images.$Event->images_array[$value].",!";
+            }
+        };
+        $images = substr($images, 0, -2);
+
+        $Event->images_array = $images;
+
+        $videos = explode(',!', request('video'));
+        $videosArray = "";
+        foreach ($videos as $video) {
+            
+            $videosArray = $videosArray.$video.",!";
+        };
+        $videosArray = substr($videosArray, 0, -2);
+
+        $Event->video_url = $videosArray;
+
+        $Event->price = request('price');
+
+        $Event->ticket_url = request('tickets');
+
+        $Event->save();
+
+        return redirect('upcoming');
     }
 
     /**

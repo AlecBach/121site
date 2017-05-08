@@ -15,7 +15,7 @@
 				<div class="backBtn"><a href="/{{$event->tense}}">Back to {{$event->tense}} events</a></div>
                 @if(Auth::check())
                 <div class="changeCont">
-                    <div class="edit"><a href="/event/edit/{{$event['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a></div>
+                    <div class="edit"><a href="/events/edit/{{$event['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a></div>
                     <div class="delete"><a href="#modal"><i class="fa fa-times" aria-hidden="true"></i> Delete</a></div>
                 </div>
                 @endif

@@ -1,7 +1,7 @@
 @extends('master')
 
-@section('title', 'Add Event')
-@section('pageID', 'addEvent')
+@section('title', 'Edit \''.$event->name.'\'')
+@section('pageID', 'editEvent')
 
 @section('css')
     <link rel="stylesheet" href="{{  URL::asset('css/bootstrap-datetimepicker.min.css') }}" />
@@ -22,9 +22,9 @@
 	<div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">New Event</div>
+                <div class="panel-heading">Edit '{{$event->name}}'</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="/events/store" enctype="multipart/form-data">
+                    <form class="form-horizontal" role="form" method="POST" action="/events/update/{{$event->id}}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{-- name  date  description  location_name  location_id  image_url  images_array  video_url   price   ticket_url  
  --}}
@@ -32,7 +32,7 @@
                             <label for="name" class="col-md-2 control-label">Name</label>
 
                             <div class="col-md-10">
-                                <input id="name" type="text" class="form-control" name="name" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{$event->name}}" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -48,6 +48,7 @@
                             <div class="col-md-10">
                                 <div class='input-group date' id='datetimepicker1'>
                                     <input type='text' name="date" id="date" class="form-control" />
+                                    <input type="text" id="currentDate" style="display: none;" value="{{$event->date}}">
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -67,7 +68,7 @@
                             <label for="description" class="col-md-2 control-label">Description</label>
 
                             <div class="col-md-10">
-                                <textarea id="description" name="description" style="display: none;" required></textarea>
+                                <textarea id="description" name="description" style="display: none;" required>{{$event->description}}</textarea>
                                 <div id="descriptionApp"></div>
                                 @if ($errors->has('description'))
                                     <span class="help-block">
@@ -81,9 +82,9 @@
                             <label for="location" class="col-md-2 control-label">Location</label>
 
                             <div class="col-md-10">
-                                <input id="locationSearch" type="text" name="locationSearch" class="form-control">
+                                <input id="locationSearch" type="text" name="locationSearch" value="{{$event->location_name}}" class="form-control">
                                 <input id="location" type="text" class="form-control" name="location" style="display: none;" required>
-
+                                <div id="mapLocation" style="display: none;">{{$event->location_id}}</div>
                                 @if ($errors->has('location'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('location') }}</strong>
@@ -101,7 +102,7 @@
                             <label for="image" class="col-md-2 control-label">Main Image</label>
 
                             <div class="col-md-10">
-                                <input id="image" type="file" name="image" required>
+                                <input id="image" type="file" name="image">
                                 <span class="help-block">
                                     Upload an image to be displayed as the main image.
                                 </span>
@@ -110,6 +111,14 @@
                                         <strong>{{ $errors->first('image') }}</strong>
                                     </span>
                                 @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="image" class="col-md-2 control-label">Current Image</label>
+
+                            <div class="col-md-10">
+                                <img class="currentImg" src="{{$event->image_url}}">
                             </div>
                         </div>
 
@@ -129,11 +138,35 @@
                             </div>
                         </div>
 
+                        @if($event->images_array)
+                        <div class="form-group">
+                            <label for="imageArray" class="col-md-2 control-label">Current Gallery</label>
+
+                            <div class="col-md-10">
+                                <!--
+                                @php
+                                $i = 0
+                                @endphp
+                                @foreach($event->images_array as $image)
+                                --><div class="galleryItemPrvw" id="img{{$i}}">
+                                    <img class="galleryImgPrvw" src="{{$image}}">
+                                    <div class="deleteGallBtn" id="{{$i}}">X<div style="display: none;" class="deleteGallConfirm"> Confirm?</div></div>
+                                    <div class="imageNumber" style="display: none;">{{$i}}</div>
+                                </div><!--
+                                @php
+                                $i++
+                                @endphp
+                                @endforeach
+                                --><input type="text" name="galleryImagesList" id="galleryImagesList" style="display: none;">
+                            </div>
+                        </div>
+                        @endif
+
                         <div class="form-group{{ $errors->has('video') ? ' has-error' : '' }}">
                             <label for="video" class="col-md-2 control-label">Video Links</label>
 
                             <div class="col-md-10">
-                                <input id="video" type="text" class="form-control" name="video">
+                                <input id="video" type="text" class="form-control"@if($event->video_url) value="{{$event->video_url}}"@endif name="video">
                                 <span class="help-block">
                                     Optional: Seperate URLs with a comma then an Exclamation mark. (,!) eg: "http://link/video?1/<strong><span>,!</span></strong>http://link/video?2/"
                                 </span>
@@ -149,7 +182,7 @@
                             <label for="price" class="col-md-2 control-label">Price</label>
 
                             <div class="col-md-10">
-                                <input id="price" type="text" class="form-control" name="price">
+                                <input id="price" type="text" class="form-control"@if($event->price) value="{{$event->price}}"@endif name="price">
                                 <span class="help-block">
                                     Optional: Add a price for event tickets. Do not add a dollar sign. eg: 39.99
                                 </span>
@@ -165,7 +198,7 @@
                             <label for="tickets" class="col-md-2 control-label">Ticket shop URL</label>
 
                             <div class="col-md-10">
-                                <input id="tickets" type="text" class="form-control" name="tickets">
+                                <input id="tickets" type="text" class="form-control"@if($event->ticket_url) value="{{$event->ticket_url}}"@endif name="tickets">
                                 <span class="help-block">
                                     Optional: Add a link to a ticketing site.
                                 </span>

@@ -37,6 +37,12 @@ Route::get('/events/{event}', 'EventsController@show');
 
 Route::get('/events/delete/{event}', 'EventsController@destroy');
 
+Route::get('/events/edit/{event}', 'EventsController@edit');
+
+Route::post('/events/update/{event}', 'EventsController@update');
+
+Route::post('/contact', 'contact@send');
+
 Route::get('/artists', 'ArtistsController@index');
 
 Route::post('/artists/store', 'ArtistsController@store');

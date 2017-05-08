@@ -5453,6 +5453,30 @@ body {
       -ms-grid-row-align: center;
       align-self: center; }
 
+.currentImg {
+  max-width: 100%; }
+
+.galleryItemPrvw {
+  display: inline-block;
+  width: 50%;
+  box-sizing: border-box;
+  position: relative; }
+  .galleryItemPrvw .galleryImgPrvw {
+    width: 100%; }
+  .galleryItemPrvw .deleteGallBtn {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    background-color: red;
+    padding: 0px 6px;
+    color: white;
+    font-weight: bolder;
+    font-size: 1.4em;
+    cursor: pointer; }
+    .galleryItemPrvw .deleteGallBtn > div {
+      display: inline; }
+
 .footer {
   width: 100%;
   display: -webkit-flex;

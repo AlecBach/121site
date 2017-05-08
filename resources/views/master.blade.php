@@ -51,14 +51,14 @@
         </div>
         <div class="remodal" data-remodal-id="contact">
           <button data-remodal-action="close" class="remodal-close"></button>
-                    <form class="form-horizontal" role="form" method="POST" action="/contact">
+                    <form class="form-horizontal" id="contact" role="form" method="POST" action="/contact">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" required autofocus>
+                                <input id="name" type="text" class="form-control" value="{{ old('name') }}" name="name" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -72,7 +72,7 @@
                             <label for="email" class="col-md-4 control-label">Email</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" required>
+                                <input id="email" type="email" value="{{ old('email') }}" class="form-control" name="email" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -83,10 +83,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('number') ? ' has-error' : '' }}">
-                            <label for="number" class="col-md-4 control-label">Phone Number (optional)</label>
+                            <label for="number" class="col-md-4 control-label">Phone Number</label>
 
                             <div class="col-md-6">
-                                <input id="number" type="number" class="form-control" name="number">
+                                <input id="number" type="number" value="{{ old('number') }}" class="form-control" name="number">
 
                                 @if ($errors->has('number'))
                                     <span class="help-block">
@@ -100,7 +100,7 @@
                             <label for="message" class="col-md-4 control-label">Message</label>
 
                             <div class="col-md-6">
-                                <textarea id="message" type="text" class="form-control" name="message" rows="10" required></textarea>
+                                <textarea id="message" type="text" class="form-control" name="message" rows="10" required>{{ old('message') }}</textarea>
 
                                 @if ($errors->has('message'))
                                     <span class="help-block">
@@ -118,6 +118,12 @@
                             </div>
                         </div>
                     </form>
+        </div>
+        <div class="remodal" data-remodal-id="contactSuccess">
+          <button data-remodal-action="close" class="remodal-close"></button>
+            <div class="col-sm-12">
+                <div style="font-size: 1.5em;">Thanks!</div>We'll be in touch shortly.
+            </div>
         </div>
         <div class="footer" id="floatingFooter">
             <div class="footerquarter" id="quarter1"></div><div class="footerquarter" id="quarter2"></div><div class="footerquarter" id="quarter3"></div><div class="footerquarter" id="quarter4"><a href="#contact"><i class="fa fa-envelope"></i></a></div>

@@ -83,17 +83,45 @@ function checkFooter(){
 $(document).ready(function(){
 	checkNavbar();
 	checkFooter();
-	if(pageID == "event"){
-		Galleria.loadTheme('../galleria/themes/classic/galleria.classic.js');
-		Galleria.configure({
-			wait: 5000,
-			transition: 'slide'
-		});
-    	Galleria.run('.galleria');
+
+	//Whack script to test if the contact form has been used
+	var contactInputs = $('#contact').find('input');
+	contactInputs.push($('#contact').find('textarea')[0]);
+	contactInputs.splice(0,1);
+	var contactFailed = false;
+	contactInputs.each(function(){
+		if(this.value !== ""){
+			contactFailed = true;
+		};
+	})
+	//If contact has been used then show contact modal.
+	if(contactFailed){
+		$('[data-remodal-id=contact]').remodal().open();
 	};
-	if(pageID == "addEvent"){
-		$('#datetimepicker1').datetimepicker();
-		// $('#descriptionApp').summernote('code',$('#descriptionApp').text());
+
+	//Load Galleria plugin.
+	if(pageID == "event"){
+		if( $('.galleria').length ){
+			Galleria.loadTheme('../galleria/themes/classic/galleria.classic.js');
+			Galleria.configure({
+				wait: 5000,
+				transition: 'slide'
+			});
+	    	Galleria.run('.galleria');
+		};
+	};
+
+	//Load plugins for adding/editing events.
+	if(pageID == "addEvent" || pageID == "editEvent"){
+		if (pageID == "addEvent") {
+			$('#datetimepicker1').datetimepicker();
+		}else{
+			var currentDate = $('#currentDate').val();
+			$('#datetimepicker1').datetimepicker({
+				defaultDate: currentDate
+			});
+		}
+
 		$('#descriptionApp').summernote({
 			height: 300,
 			toolbar: [
@@ -108,16 +136,36 @@ $(document).ready(function(){
 			callbacks: {
 			    onKeyup: function() {
 			    	var html = $('.note-editable').html();
-			    	console.log(html);
 			        $('#description').html(html);
 			    },
 			    onChange: function() {
 			    	var html = $('.note-editable').html();
-			    	console.log(html);
 			        $('#description').html(html);
 			    }
 		    }
 		});
+		if(pageID == "editEvent"){
+			var description = $('#description').html();
+			var descriptionHtml = $('<div>' + description + '</div>').text();
+			$('#descriptionApp').summernote('code', descriptionHtml);
+
+			$('.galleryItemPrvw').each(function(){
+				var deleteBtn = $(this).children('.deleteGallBtn');
+				var string = "";
+				$('.imageNumber').each(function(){
+					string = string + $(this).text() + ",";
+				});
+				$('#galleryImagesList').val(string);
+				$(deleteBtn).click(function(){
+					$(this).parent().remove();
+					var string = "";
+					$('.imageNumber').each(function(){
+						string = string + $(this).text() + ",";
+					})
+					$('#galleryImagesList').val(string);
+				});
+			})
+		}
 	}
 	if(pageID == "upcoming" || pageID == "past"){
 		$('#close').click(function(){
@@ -132,7 +180,7 @@ $(window).scroll(function(event){
 	
 });
 function initMap(){
-	if (pageID == "addEvent") {
+	if (pageID == "addEvent" || pageID == "editEvent") {
 		//create default location. required to pull map from API, will not be seen by end user.
 		var pyrmont = new google.maps.LatLng(-41.2864603, 174.77623600000004);
 		//create new google map on #map div.
@@ -517,6 +565,36 @@ function initMap(){
 		//initialise autocomplete on the input.
 		var autocomplete = new google.maps.places.Autocomplete(input, options);
 
+		if (pageID == "editEvent") {
+
+			for (var i = 0; i < gmarkers.length; i++) {
+	            gmarkers[i].setMap(null);
+	        }
+
+			var locationString = $('#mapLocation').text();
+			locationString = locationString.slice(1,-1);
+			var arr = locationString.split(', ');
+			var location = new google.maps.LatLng(arr[0], arr[1]);
+			
+			//create and show marker at location.
+			var marker = new google.maps.Marker({
+		        position: location,
+		        map: map,
+		    });
+
+			//add marker to gmarkers array.
+			gmarkers.push(marker);
+
+			//several functions which open the map, take the user to their
+			//location and ensure that the transition is smooth.
+		    map.panTo(location);
+		    $('.map-margin').css({'padding-top':'30px'});
+		    $('#location').val(location);
+
+		    google.maps.event.trigger(map, 'resize');
+		    map.panTo(location);
+		}
+
 		//add event listener to autocomplete, when select changed, call this funciton.
 		google.maps.event.addListener(autocomplete, 'place_changed', function(){
 
@@ -554,12 +632,11 @@ function initMap(){
 		locationString = locationString.slice(1,-1);
 		var arr = locationString.split(', ');
 		var location = new google.maps.LatLng(arr[0], arr[1]);
-		
-
 
 	    var map = new google.maps.Map(document.getElementById("map"), {
 		    center: location,
 		    zoom: 15,
+		    scrollwheel: false,
 		    disableDefaultUI: true,
 		    styles: [
 			    {
@@ -930,7 +1007,7 @@ function initMap(){
 
 		var marker = new google.maps.Marker({
 	        position: location,
-	        map: map,
+	        map: map
 	    });
 
 	}

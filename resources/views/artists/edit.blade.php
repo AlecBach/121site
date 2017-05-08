@@ -88,7 +88,7 @@
                             <label for="image" class="col-md-4 control-label">Current Image</label>
 
                             <div class="col-md-6">
-                                <img src="{{$artist['image_url']}}">
+                                <img class="currentImg" src="{{$artist['image_url']}}">
                             </div>
                         </div>
 
