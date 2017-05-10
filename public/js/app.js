@@ -48,19 +48,33 @@ function checkNavbar(){
 	if(pageID == "home"){
 		$('#navBar').removeClass('navScrolled static');
     	$('#logo').removeClass('logoScrolled');
+    	$('#navList').removeClass('navListScroll');
 		$(window).scroll(function (event) {
 		    var scroll = $(window).scrollTop();
 		    if(! scroll == 0){
 		    	$('#navBar').addClass('navScrolled');
 		    	$('#logo').addClass('logoScrolled');
+		    	$('#navList').addClass('navListScroll');
 		    }else{
 		    	$('#navBar').removeClass('navScrolled');
 		    	$('#logo').removeClass('logoScrolled');
+		    	$('#navList').removeClass('navListScroll');
 		    }
 		});
+		var scroll = $(window).scrollTop();
+		    if(! scroll == 0){
+		    	$('#navBar').addClass('navScrolled');
+		    	$('#logo').addClass('logoScrolled');
+		    	$('#navList').addClass('navListScroll');
+		    }else{
+		    	$('#navBar').removeClass('navScrolled');
+		    	$('#logo').removeClass('logoScrolled');
+		    	$('#navList').removeClass('navListScroll');
+		    }
 	}else{
 		$('#navBar').addClass('navScrolled static');
 		$('#logo').addClass('logoScrolled');
+		$('#navList').addClass('navListScroll');
 	}
 }
 
@@ -73,17 +87,77 @@ function checkFooter(){
 	if(scroll > distance){
 		var footerH = scroll - distance;
 		footerH = footerH + 65;
+		if(footerH > 200){
+			footerH = 200
+		};
 		$('#floatingFooter').css({'height':footerH+"px"});
+
 
 	}else{
 		$('#floatingFooter').removeAttr( 'style' );
 	}
+	
 };
-
+function checkHeight() {
+	var vh = $('#getVH').outerHeight();
+	var minH = vh - 312;
+	if ($(".events")[0]) {
+		$('.events').css({"min-height":minH+"px"});
+	}else if($("#artistCont")[0]) {
+		$('#artistCont').css({"min-height":minH+"px"});
+	}
+}
 $(document).ready(function(){
 	checkNavbar();
 	checkFooter();
-
+	checkHeight();
+	if(pageID == "home"){
+		var images = $('#slider-container>.images');
+		setTimeout(function(){
+			$(images).css({'transform':'translate3d(-16.6666%,0,0)'});
+			$(images).css({'transition-duration':'1s'});
+			setTimeout(function(){
+				$(images).css({'transform':'translate3d(-33.3333%,0,0)'});
+				setTimeout(function(){
+					$(images).css({'transform':'translate3d(-50%,0,0)'});
+					setTimeout(function(){
+						$(images).css({'transform':'translate3d(-66.6666%,0,0)'});
+						setTimeout(function(){
+							$(images).css({'transform':'translate3d(-83.3333%,0,0)'});
+							setTimeout(function(){
+								$(images).css({'transform':'translate3d(0%,0,0)'});
+									$(images).css({'transition-duration':'0s'});
+									scrollImages();
+							}, 1750);
+						}, 3500);
+					}, 3500);
+				}, 3500);
+			}, 3500);
+		}, 2750);
+		function scrollImages() {
+			setTimeout(function(){
+				$(images).css({'transform':'translate3d(-16.6666%,0,0)'});
+				$(images).css({'transition-duration':'1s'});
+				setTimeout(function(){
+					$(images).css({'transform':'translate3d(-33.3333%,0,0)'});
+					setTimeout(function(){
+						$(images).css({'transform':'translate3d(-50%,0,0)'});
+						setTimeout(function(){
+							$(images).css({'transform':'translate3d(-66.6666%,0,0)'});
+							setTimeout(function(){
+								$(images).css({'transform':'translate3d(-83.3333%,0,0)'});
+								setTimeout(function(){
+									$(images).css({'transform':'translate3d(0%,0,0)'});
+										$(images).css({'transition-duration':'0s'});
+										scrollImages();
+								}, 1750);
+							}, 3500);
+						}, 3500);
+					}, 3500);
+				}, 3500);
+			}, 1750);
+		};
+	}
 	//Whack script to test if the contact form has been used
 	var contactInputs = $('#contact').find('input');
 	contactInputs.push($('#contact').find('textarea')[0]);
@@ -172,12 +246,37 @@ $(document).ready(function(){
 			$('.createEvent').slideUp();
 		});
 	}
+	var menuOpen = false;
+	function toggleMenu(){
+		if(!menuOpen){
+			menuOpen = true;
+			$('.fader').css({'opacity':'1','pointer-events':'auto'});
+			$('.menu').css({'transform': 'translateX(calc(100% - 250px))'});
+			$('#firstline').css({'transform': 'rotate(45deg)'});
+			$('#secondline').css({'transform': 'rotate(-45deg)'});
+			console.log('menu is now open')
+		}else{
+			menuOpen = false;
+			$('.fader').css({'opacity':'0','pointer-events':'none'});
+			$('.menu').css({'transform': 'translateX(calc(100%))'});
+			$('#firstline').css({'transform': 'rotate(0deg)'});
+			$('#secondline').css({'transform': 'rotate(0deg)'});
+			console.log('menu is now closed')
+		}
+
+	}
+	$('.fader').click(function(){toggleMenu()});
+	$('.burger').click(function(){toggleMenu()});
+	$('#closeMenu').click(function(){toggleMenu()});
 });
 $(window).scroll(function(event){
 	//Get scroll from top, get distance from top to footer, when scroll from top + 100vh (bottom of view) is more than distance to footer,
 	//increase size of footer to match background 200px. to ensure smooth position animation for mail.
 	checkFooter();
 	
+});
+$(window).resize(function(){
+	checkHeight();
 });
 function initMap(){
 	if (pageID == "addEvent" || pageID == "editEvent") {

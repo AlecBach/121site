@@ -20,6 +20,24 @@
         <link rel="stylesheet" href="{{  URL::asset('Remodal/dist/remodal-default-theme.css') }}">
         @yield('css')
         
+        <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#000000">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#000000">
+
     </head>
     <body>
         <div id="navBar" class="navScrolled static">
@@ -43,8 +61,40 @@
                         <li><a href="/past" class="{{ Request::is('past*') ? 'active' : '' }}">PAST</a></li>
                         <li><a href="/artists" class="{{ Request::is('artists*') ? 'active' : '' }}">ARTISTS</a></li>
                     </ul>
+                    <div class="burger">
+                        <div></div><div></div><div></div>
+                    </div>
+                    
                 </div>
+                
+                
             </div> 
+        </div>
+        <div class="smallmenu">
+            <div class="menu">
+                <ul id="navList" class="navListScroll">
+                    <li id="closeMenu"><div class="closeMenu"><div id="firstline"></div><div id="secondline"></div></div></li>
+                    <a href="/"><li class="@if(Route::getCurrentRoute()->uri() == '/'){{'active'}}@endif">
+                        <div id="logo" class="logoMobileNav">
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 1000 820" style="enable-background:new 0 0 1000 820;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0{stroke:#000000;stroke-width:60;stroke-miterlimit:10;}
+                        </style>
+                        <path d="M210.4,816.6L4.6,5.5h110.7l96.3,410.3C235.7,517,257.4,618,271.8,696.3h2.4c13.2-80.6,38.5-176.9,66.2-281.6L448.7,5.5
+                            h109.5l98.7,411.5c22.9,96.3,44.5,192.5,56.6,278h2.4c16.8-89,39.7-179.3,65-280.4L887.9,5.5H995L765.2,816.6H655.7L553.4,394.2
+                            c-25.3-103.5-42.1-182.9-52.9-264.7H498c-14.4,80.6-32.5,160-62.6,264.7L319.9,816.6H210.4z"/>
+                        <line class="st0" x1="5" y1="335.3" x2="993.5" y2="335.3"/>
+                        <line class="st0" x1="6.1" y1="462.8" x2="994.6" y2="462.8"/>
+                        </svg>
+                    </div>
+                    </li></a>
+                    <a href="/upcoming"><li class="{{ Request::is('upcoming*') ? 'active' : '' }}">UPCOMING</li></a>
+                    <a href="/past"><li class="{{ Request::is('past*') ? 'active' : '' }}">PAST</li></a>
+                    <a href="/artists"><li class="{{ Request::is('artists*') ? 'active' : '' }}">ARTISTS</li></a>
+                </ul>
+            </div>
+            <div class="fader"></div>
         </div>
         <div class="remodal-bg">
         @yield('content')
@@ -100,7 +150,7 @@
                             <label for="message" class="col-md-4 control-label">Message</label>
 
                             <div class="col-md-6">
-                                <textarea id="message" type="text" class="form-control" name="message" rows="10" required>{{ old('message') }}</textarea>
+                                <textarea id="message" type="text" class="form-control" name="message" rows="5" required>{{ old('message') }}</textarea>
 
                                 @if ($errors->has('message'))
                                     <span class="help-block">
