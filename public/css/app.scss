@@ -297,7 +297,9 @@ body{
     	}
     }
 }
-
+.ABTactive{
+	color: white !important	;
+}
 #homeSection2{
 	background-image: url(../imgs/ignasi_pattern_s.png);
 	width: 100%;
@@ -309,6 +311,7 @@ body{
 		background-color: white;
 		>*{
 			align-self: center;
+			text-align: center;
 			color: black;
 		}
 		#hr1{

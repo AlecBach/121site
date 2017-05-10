@@ -175,9 +175,13 @@ $(document).ready(function(){
 	$('#mobileContact').click(function(){
 		$('[data-remodal-id=contact]').remodal().open();
 	})
+	var adminOpen = false;
 	if($('.adminCont')[0]){
 		$('.adminBtn').click(function(){
 			$('.adminOuter').slideToggle();
+			console.log('!!');
+			$('#adminBtnTxt').toggleClass('ABTactive');
+			console.log('??');
 			//toggle admin button text css making text white
 		})
 	}

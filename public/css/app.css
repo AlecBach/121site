@@ -5576,6 +5576,9 @@ body {
       box-decoration-break: clone;
       font-weight: bolder; }
 
+.ABTactive {
+  color: white !important; }
+
 #homeSection2 {
   background-image: url(../imgs/ignasi_pattern_s.png);
   width: 100%; }
@@ -5596,6 +5599,7 @@ body {
       -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+      text-align: center;
       color: black; }
     #homeSection2 > .center #hr1 {
       height: 1px;
