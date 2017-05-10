@@ -48,6 +48,9 @@ class ArtistsController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Auth::check()){
+            return redirect('/');
+        }
         
         $artist = new Artist;
 
@@ -76,6 +79,9 @@ class ArtistsController extends Controller
      */
     public function show($id)
     {
+        if(!is_numeric($id)){
+            return redirect('/artists');
+        }
         $artist = Artist::find($id);
         
         return view('artists.show', compact('artist'));
@@ -89,6 +95,9 @@ class ArtistsController extends Controller
      */
     public function edit($id)
     {
+        if(!Auth::check()){
+            return redirect('/');
+        }
         $artist = Artist::find($id);
 
         return view('artists.edit', compact('artist'));
@@ -103,6 +112,9 @@ class ArtistsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!Auth::check()){
+            return redirect('/');
+        }
         $artist = Artist::find($id);
 
         $artist->name = request('name');
@@ -133,6 +145,9 @@ class ArtistsController extends Controller
      */
     public function destroy($id)
     {
+        if(!Auth::check()){
+            return redirect('/');
+        }
         $artist = Artist::find($id);
 
         $artist->delete();

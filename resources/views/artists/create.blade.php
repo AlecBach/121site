@@ -60,7 +60,7 @@
                             <label for="description" class="col-md-4 control-label">Description</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" type="text" class="form-control" name="description" required></textarea>
+                                <textarea id="description" type="text" rows="6" class="form-control" name="description" required></textarea>
 
                                 @if ($errors->has('description'))
                                     <span class="help-block">

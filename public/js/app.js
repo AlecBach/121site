@@ -172,7 +172,15 @@ $(document).ready(function(){
 	if(contactFailed){
 		$('[data-remodal-id=contact]').remodal().open();
 	};
-
+	$('#mobileContact').click(function(){
+		$('[data-remodal-id=contact]').remodal().open();
+	})
+	if($('.adminCont')[0]){
+		$('.adminBtn').click(function(){
+			$('.adminOuter').slideToggle();
+			//toggle admin button text css making text white
+		})
+	}
 	//Load Galleria plugin.
 	if(pageID == "event"){
 		if( $('.galleria').length ){
@@ -254,14 +262,12 @@ $(document).ready(function(){
 			$('.menu').css({'transform': 'translateX(calc(100% - 250px))'});
 			$('#firstline').css({'transform': 'rotate(45deg)'});
 			$('#secondline').css({'transform': 'rotate(-45deg)'});
-			console.log('menu is now open')
 		}else{
 			menuOpen = false;
 			$('.fader').css({'opacity':'0','pointer-events':'none'});
 			$('.menu').css({'transform': 'translateX(calc(100%))'});
 			$('#firstline').css({'transform': 'rotate(0deg)'});
 			$('#secondline').css({'transform': 'rotate(0deg)'});
-			console.log('menu is now closed')
 		}
 
 	}

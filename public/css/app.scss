@@ -11,6 +11,10 @@
 body{
 	overflow-x: hidden;
 }
+*::selection{
+	color: black;
+	background-color: yellow;
+}
 #navBar{
 	width: 100%;
 	// height: 200px;
@@ -110,7 +114,7 @@ body{
 			text-align: center;
 			padding-top: 87px;
 			transition: padding-top 0.5s;
-			li:first-child{
+			#closeMenu{
 				border-top:1px solid #3c3c3c;
 			}
 			#closeMenu{
@@ -124,6 +128,9 @@ body{
 				color: yellow;
 				text-decoration: none;
 			}
+			#mobileContact{
+				cursor: pointer;
+			}
 			li{
 				font-family: montserrat;
 				font-size: 1.2em;
@@ -131,6 +138,11 @@ body{
 				padding: 12px;
 				transition: background-color ease-in-out 0.3s;
 				border-bottom: 1px solid #3c3c3c;
+				i{
+					font-size: 1.3em;
+					color: white;
+					transition: color 0.3s;
+				}
 				.logoMobileNav{
 					width: 40px !important;
 					padding: 0 !important;
@@ -157,6 +169,7 @@ body{
 						position: absolute;
 						width: 40px;
 						top:15px;
+						left: -2px;
 						height: 5px;
 						background-color: white;
 						transform: rotate(0deg);
@@ -178,6 +191,9 @@ body{
 				background-color: #252525;
 				.closeMenu div{
 					background-color: yellow;
+				}
+				i{
+					color: yellow;
 				}
 				.st0, path{
 					stroke: yellow !important;
@@ -439,6 +455,68 @@ body{
 		
 		font-size: 30px;
 		transition: color 0.3s;
+	}
+	.adminBtn{
+		cursor: pointer;
+		position: relative;
+	}
+	.adminBtn:hover{
+		#adminBtnTxt{
+			color: white;
+		}
+	}
+	#adminBtnTxt{
+    	display: block;
+	    align-self: center;
+	    font-family: montserrat;
+	    transition: color 0.3s;
+	    font-size: 1.4em;
+	    font-weight: 800;
+	}
+	.adminOuter{
+		position: absolute;
+		display:none;
+		top: -70px;
+	    left: 10px;
+	}
+	.adminOuter::after{
+		content: "";
+	    position: absolute;
+	    width: 0;
+	    height: 0;
+	    border-top: 13px solid rgba(40, 40, 40, 0.69);
+	    border-left: 18px solid rgba(238, 238, 238, 0);
+	    border-right: 18px solid rgba(238, 238, 238, 0);
+	    left: calc(50% - 18px);
+	}
+	.adminCont{
+		 
+	    padding: 10px;
+	    
+	    border-radius: 3px;
+	    background-color: rgba(40, 40, 40, 0.66);
+	    color: white;
+	    min-width: 204px;
+	    width: calc(100% - 20px);
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    a:first-child{
+	    	margin-right: 6px;
+	    	background-color: green;
+	    	border: 1px solid #00b200;
+	    }
+	    a:last-child{
+    	    background-color: #40408f;
+			border: 1px solid #637fe3;
+	    }
+		a{		
+			border-radius: 3px;
+			padding: 2px 8px;
+			color: white;
+			font-family: montserrat;
+			font-weight: 800;
+		}
 	}
 	i:hover{
 		color: white;
@@ -919,6 +997,9 @@ body{
 }
 
 @media screen and (min-width: 1020px){
+	.footer .adminOuter{
+		left: calc(50% - 102px);
+	}
 	.center{
 		width: 1000px;
 		margin: 0 auto;

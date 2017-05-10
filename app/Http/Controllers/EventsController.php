@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Event;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Intervention\Image\ImageManagerStatic as Image;
 use Intervention\Image\Size;
@@ -94,6 +95,9 @@ class EventsController extends Controller
      */
     public function create()
     {
+        if(!Auth::check()){
+            return redirect('/');
+        }
         return view('events.create');
     }
 
@@ -105,6 +109,9 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Auth::check()){
+            return redirect('/');
+        }
         // var_dump(request('name'));
         // echo "<br>";
         // var_dump(request('date'));
@@ -245,6 +252,9 @@ class EventsController extends Controller
      */
     public function edit($id)
     {
+        if(!Auth::check()){
+            return redirect('/');
+        }
         $event = Event::find($id);
 
         if($event->images_array){
@@ -269,6 +279,9 @@ class EventsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!Auth::check()){
+            return redirect('/');
+        }
         $Event = Event::find($id);
 
         $Event->name = request('name');
@@ -361,6 +374,9 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
+        if(!Auth::check()){
+            return redirect('/');
+        }
         $event = Event::find($id);
 
         date_default_timezone_set('Pacific/Auckland');

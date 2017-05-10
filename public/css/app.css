@@ -5329,6 +5329,14 @@ button.close {
 body {
   overflow-x: hidden; }
 
+*::-moz-selection {
+  color: black;
+  background-color: yellow; }
+
+*::selection {
+  color: black;
+  background-color: yellow; }
+
 #navBar {
   width: 100%;
   position: fixed;
@@ -5426,7 +5434,7 @@ body {
       text-align: center;
       padding-top: 87px;
       transition: padding-top 0.5s; }
-      .smallmenu .menu ul li:first-child {
+      .smallmenu .menu ul #closeMenu {
         border-top: 1px solid #3c3c3c; }
       .smallmenu .menu ul #closeMenu {
         cursor: pointer; }
@@ -5436,6 +5444,8 @@ body {
       .smallmenu .menu ul a:hover {
         color: yellow;
         text-decoration: none; }
+      .smallmenu .menu ul #mobileContact {
+        cursor: pointer; }
       .smallmenu .menu ul li {
         font-family: montserrat;
         font-size: 1.2em;
@@ -5443,6 +5453,10 @@ body {
         padding: 12px;
         transition: background-color ease-in-out 0.3s;
         border-bottom: 1px solid #3c3c3c; }
+        .smallmenu .menu ul li i {
+          font-size: 1.3em;
+          color: white;
+          transition: color 0.3s; }
         .smallmenu .menu ul li .logoMobileNav {
           width: 40px !important;
           padding: 0 !important;
@@ -5457,6 +5471,7 @@ body {
             position: absolute;
             width: 40px;
             top: 15px;
+            left: -2px;
             height: 5px;
             background-color: white;
             -webkit-transform: rotate(0deg);
@@ -5471,6 +5486,8 @@ body {
         background-color: #252525; }
         .smallmenu .menu ul li:hover .closeMenu div {
           background-color: yellow; }
+        .smallmenu .menu ul li:hover i {
+          color: yellow; }
         .smallmenu .menu ul li:hover .st0, .smallmenu .menu ul li:hover path {
           stroke: yellow !important;
           fill: yellow !important; }
@@ -5717,6 +5734,64 @@ body {
   .footer i {
     font-size: 30px;
     transition: color 0.3s; }
+  .footer .adminBtn {
+    cursor: pointer;
+    position: relative; }
+  .footer .adminBtn:hover #adminBtnTxt {
+    color: white; }
+  .footer #adminBtnTxt {
+    display: block;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    font-family: montserrat;
+    transition: color 0.3s;
+    font-size: 1.4em;
+    font-weight: 800; }
+  .footer .adminOuter {
+    position: absolute;
+    display: none;
+    top: -70px;
+    left: 10px; }
+  .footer .adminOuter::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 13px solid rgba(40, 40, 40, 0.69);
+    border-left: 18px solid rgba(238, 238, 238, 0);
+    border-right: 18px solid rgba(238, 238, 238, 0);
+    left: calc(50% - 18px); }
+  .footer .adminCont {
+    padding: 10px;
+    border-radius: 3px;
+    background-color: rgba(40, 40, 40, 0.66);
+    color: white;
+    min-width: 204px;
+    width: calc(100% - 20px);
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    .footer .adminCont a:first-child {
+      margin-right: 6px;
+      background-color: green;
+      border: 1px solid #00b200; }
+    .footer .adminCont a:last-child {
+      background-color: #40408f;
+      border: 1px solid #637fe3; }
+    .footer .adminCont a {
+      border-radius: 3px;
+      padding: 2px 8px;
+      color: white;
+      font-family: montserrat;
+      font-weight: 800; }
   .footer i:hover {
     color: white; }
   .footer a {
@@ -6089,6 +6164,8 @@ body {
     height: 50vh; } }
 
 @media screen and (min-width: 1020px) {
+  .footer .adminOuter {
+    left: calc(50% - 102px); }
   .center {
     width: 1000px;
     margin: 0 auto; }

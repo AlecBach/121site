@@ -92,6 +92,7 @@
                     <a href="/upcoming"><li class="{{ Request::is('upcoming*') ? 'active' : '' }}">UPCOMING</li></a>
                     <a href="/past"><li class="{{ Request::is('past*') ? 'active' : '' }}">PAST</li></a>
                     <a href="/artists"><li class="{{ Request::is('artists*') ? 'active' : '' }}">ARTISTS</li></a>
+                    <li id="mobileContact"><i class="fa fa-envelope"></i></li>
                 </ul>
             </div>
             <div class="fader"></div>
@@ -176,7 +177,7 @@
             </div>
         </div>
         <div class="footer" id="floatingFooter">
-            <div class="footerquarter" id="quarter1"></div><div class="footerquarter" id="quarter2"></div><div class="footerquarter" id="quarter3"></div><div class="footerquarter" id="quarter4"><a href="#contact"><i class="fa fa-envelope"></i></a></div>
+            <div class="footerquarter{{ Auth::check() ? ' adminBtn' : '' }}" id="quarter1">@if(Auth::check())<div id="adminBtnTxt">ADMIN</div><div class="adminOuter"> <div class="adminCont"><a href="/events/add">Add Event</a><a href="/artists/add">Add Artist</a></div></div>@endif</div><div class="footerquarter" id="quarter2"></div><div class="footerquarter" id="quarter3"></div><div class="footerquarter" id="quarter4"><a href="#contact"><i class="fa fa-envelope"></i></a></div>
         </div>
         <div class="footer" id="staticFooter">
             <div class="footerquarter" id="quarter1"></div><div class="footerquarter" id="quarter2"></div><div class="footerquarter" id="quarter3"></div><div class="footerquarter" id="quarter4"></div>
