@@ -42,7 +42,7 @@ dfn {
   font-style: italic; }
 
 h1 {
-  font-size: 2em;
+  font-size: 2rem;
   margin: .67em 0; }
 
 mark {
@@ -3776,7 +3776,7 @@ tbody.collapse.in {
 
 .label {
   display: inline;
-  padding: .2em .6em .3em;
+  padding: .2em .6em .3rem;
   font-size: 75%;
   font-weight: 700;
   line-height: 1;
@@ -5329,6 +5329,9 @@ button.close {
 body {
   overflow-x: hidden; }
 
+html {
+  font-size: 70%; }
+
 *::-moz-selection {
   color: black;
   background-color: yellow; }
@@ -5363,7 +5366,7 @@ body {
       #navBar > .center > div ul li {
         font-family: 'montserrat';
         display: inline-block;
-        font-size: 2em;
+        font-size: 2rem;
         padding: 2px 10px; }
         #navBar > .center > div ul li a {
           color: white;
@@ -5432,7 +5435,7 @@ body {
       padding: 0;
       width: 250px;
       text-align: center;
-      padding-top: 87px;
+      padding-top: 94px;
       transition: padding-top 0.5s; }
       .smallmenu .menu ul #closeMenu {
         border-top: 1px solid #3c3c3c; }
@@ -5448,31 +5451,31 @@ body {
         cursor: pointer; }
       .smallmenu .menu ul li {
         font-family: montserrat;
-        font-size: 1.2em;
+        font-size: 1.4rem;
         font-weight: 800;
         padding: 12px;
         transition: background-color ease-in-out 0.3s;
         border-bottom: 1px solid #3c3c3c; }
         .smallmenu .menu ul li i {
-          font-size: 1.3em;
+          font-size: 1.6rem;
           color: white;
           transition: color 0.3s; }
         .smallmenu .menu ul li .logoMobileNav {
-          width: 40px !important;
+          width: 32px !important;
           padding: 0 !important;
           margin: 0 auto; }
         .smallmenu .menu ul li .closeMenu {
           position: relative;
-          height: 35px;
+          height: 24px;
           cursor: pointer;
-          width: 35px;
+          width: 26px;
           margin: 0 auto; }
           .smallmenu .menu ul li .closeMenu div {
             position: absolute;
-            width: 40px;
-            top: 15px;
+            width: 30px;
+            top: 10px;
             left: -2px;
-            height: 5px;
+            height: 4px;
             background-color: white;
             -webkit-transform: rotate(0deg);
             -ms-transform: rotate(0deg);
@@ -5492,7 +5495,7 @@ body {
           stroke: yellow !important;
           fill: yellow !important; }
     .smallmenu .menu .navListScroll {
-      padding-top: 25px; }
+      padding-top: 31px; }
   .smallmenu .fader {
     pointer-events: none;
     width: 100%;
@@ -5569,8 +5572,9 @@ body {
       color: #141414;
       background-color: white;
       text-transform: uppercase;
-      line-height: 1.4em;
+      line-height: 3.2rem;
       padding: 0px 6px;
+      font-size: 2.2rem;
       font-family: montserrat;
       -webkit-box-decoration-break: clone;
       box-decoration-break: clone;
@@ -5605,8 +5609,10 @@ body {
       height: 1px;
       width: 80%;
       background: yellow; }
+    #homeSection2 > .center > h2 {
+      font-size: 2.2rem; }
     #homeSection2 > .center p {
-      font-size: 1.1em;
+      font-size: 1.3rem;
       margin-top: 15px;
       text-align: center; }
     #homeSection2 > .center .icons {
@@ -5643,10 +5649,10 @@ body {
           width: 124px;
           margin-top: 10px; }
         #homeSection2 > .center .icons .item .title {
-          font-size: 1.4em;
+          font-size: 1.4rem;
           text-decoration: none; }
         #homeSection2 > .center .icons .item .desc {
-          font-size: 1.1em;
+          font-size: 1.25rem;
           text-decoration: none;
           text-align: center; }
       #homeSection2 > .center .icons .item:hover .title {
@@ -5675,7 +5681,7 @@ body {
     padding: 0px 6px;
     color: white;
     font-weight: bolder;
-    font-size: 1.4em;
+    font-size: 1.4rem;
     cursor: pointer; }
     .galleryItemPrvw .deleteGallBtn > div {
       display: inline; }
@@ -5751,7 +5757,7 @@ body {
     align-self: center;
     font-family: montserrat;
     transition: color 0.3s;
-    font-size: 1.4em;
+    font-size: 1.4rem;
     font-weight: 800; }
   .footer .adminOuter {
     position: absolute;
@@ -5852,14 +5858,14 @@ body {
       margin: 0;
       max-width: 95%; }
     #artistCont .artistItem h1 {
-      font-size: 1.9em;
+      font-size: 1.9rem;
       margin: 37px 0 3px;
       font-family: 'montserrat';
       color: white;
       text-transform: uppercase;
       font-weight: bold; }
     #artistCont .artistItem h2 {
-      font-size: 1.2em;
+      font-size: 1.2rem;
       font-family: 'Open Sans', sans-serif;
       color: #999; }
     #artistCont .artistItem .artistImage, #artistCont .artistItem .artistMask {
@@ -5884,11 +5890,11 @@ body {
     #artistCont > a:hover .addMask {
       background-color: lime; }
   #artistCont .addArtist h1 {
-    font-size: 3em;
+    font-size: 3rem;
     color: white;
     margin: 0; }
   #artistCont .addArtist h2 {
-    font-size: 2em;
+    font-size: 2rem;
     font-family: 'montserrat';
     font-weight: bold;
     text-transform: uppercase;
@@ -5940,11 +5946,11 @@ body {
         font-weight: bolder;
         color: #363636; }
       #artistShow .artistItem .right .txtCnt h3 {
-        font-size: 1.3em;
+        font-size: 1.3rem;
         color: #363636;
         text-align: right; }
       #artistShow .artistItem .right .txtCnt p {
-        font-size: 1em; }
+        font-size: 1rem; }
 
 #artistPage {
   background-image: url(../imgs/artists/ep_naturalwhite.png); }
@@ -5988,7 +5994,7 @@ body {
       .upcomingBG .center .createEvent .admin-text, .pastBG .center .createEvent .admin-text {
         background-color: #303030;
         color: white;
-        font-size: 1em; }
+        font-size: 1rem; }
         .upcomingBG .center .createEvent .admin-text p, .pastBG .center .createEvent .admin-text p {
           margin: 0;
           padding: 16px 22px;
@@ -6002,7 +6008,7 @@ body {
           .upcomingBG .center .createEvent .admin-text .admin-icons #close, .pastBG .center .createEvent .admin-text .admin-icons #close {
             color: red; }
           .upcomingBG .center .createEvent .admin-text .admin-icons i, .pastBG .center .createEvent .admin-text .admin-icons i {
-            font-size: 1.4em;
+            font-size: 1.4rem;
             margin-right: 5px; }
           .upcomingBG .center .createEvent .admin-text .admin-icons i:hover, .pastBG .center .createEvent .admin-text .admin-icons i:hover {
             cursor: pointer; }
@@ -6027,14 +6033,14 @@ body {
         width: 100%;
         bottom: 0;
         padding: 20px; }
+        .events .center .eventItem .textCont > * {
+          font-size: 1.7rem; }
         .events .center .eventItem .textCont h1, .events .center .eventItem .textCont h2, .events .center .eventItem .textCont h3 {
           margin: 0;
           color: white;
           text-shadow: 0px 0px 7px black; }
         .events .center .eventItem .textCont h1 {
           display: block; }
-        .events .center .eventItem .textCont h2, .events .center .eventItem .textCont h3 {
-          font-size: 2em; }
     .events .center a:last-child .eventItem {
       margin-bottom: 0; }
     .events .center .event {
@@ -6049,12 +6055,11 @@ body {
           bottom: 0;
           padding: 20px;
           width: 100%; }
-          .events .center .event .headerImg .textCont h1, .events .center .event .headerImg .textCont h2, .events .center .event .headerImg .textCont h3, .events .center .event .headerImg .textCont h4 {
+          .events .center .event .headerImg .textCont > * {
             margin: 0;
+            font-size: 1.7rem;
             color: white;
             text-shadow: 0px 0px 7px black; }
-          .events .center .event .headerImg .textCont h2, .events .center .event .headerImg .textCont h3, .events .center .event .headerImg .textCont h4 {
-            font-size: 2em; }
       .events .center .event .body {
         padding: 20px; }
       .events .center .event .galleria {
@@ -6077,7 +6082,7 @@ body {
     left: 10px; }
     #mapCont #mapText h1, #mapCont #mapText i {
       padding: 5px 9px;
-      font-size: 1em;
+      font-size: 1rem;
       font-weight: 100;
       margin: 0;
       display: inline-block;
@@ -6085,7 +6090,7 @@ body {
     #mapCont #mapText h1 {
       font-family: roboto;
       padding-left: 0;
-      font-size: 1.2em; }
+      font-size: 1.2rem; }
     #mapCont #mapText i {
       padding-right: 5px; }
   #mapCont #map {
@@ -6111,9 +6116,15 @@ body {
     display: none; } }
 
 @media screen and (min-width: 720px) {
+  html {
+    font-size: 100%; }
   .center {
     width: 700px;
     margin: 0 auto; }
+  #homeSection2 > .center > p {
+    font-size: 1.05rem; }
+  #homeSection2 > .center .icons .item .desc {
+    font-size: 1.05rem; }
   #artistShow .artistItem {
     height: 350px;
     display: -webkit-flex;
@@ -6148,10 +6159,10 @@ body {
         text-transform: uppercase;
         font-weight: bolder; }
       #artistShow .artistItem .right .txtCnt h3 {
-        font-size: 1.3em;
+        font-size: 1.3rem;
         text-align: right; }
       #artistShow .artistItem .right .txtCnt p {
-        font-size: 1em; }
+        font-size: 1rem; }
   .events .center .eventItem .textCont h3 {
     float: right; }
   .events .center .eventItem .textCont h2, .events .center .eventItem .textCont h3 {
