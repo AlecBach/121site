@@ -112,6 +112,8 @@ class EventsController extends Controller
         if(!Auth::check()){
             return redirect('/');
         }
+
+        ini_set('memory_limit', '512M');
         // var_dump(request('name'));
         // echo "<br>";
         // var_dump(request('date'));
@@ -282,6 +284,9 @@ class EventsController extends Controller
         if(!Auth::check()){
             return redirect('/');
         }
+
+        ini_set('memory_limit', '512M');
+        
         $Event = Event::find($id);
 
         $Event->name = request('name');

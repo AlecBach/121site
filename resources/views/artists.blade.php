@@ -14,48 +14,7 @@
             <div class="artistImage" style="background-image: url(..{{$artist['image_url']}})"></div>
         </div></a>
         @endforeach
-        <a href=""><div class="artistItem">
-            <h1>Artist Name</h1>
-            <h2>Artist's home town</h2>
-            <div class="artistMask"></div>
-            <div class="artistImage"></div>
-        </div></a>{{-- 
-         --}}<a href=""><div class="artistItem">
-            <h1>Artist Name</h1>
-            <h2>Artist's home town</h2>
-            <div class="artistMask"></div>
-            <div class="artistImage"></div>
-        </div></a>{{-- 
-         --}}<a href=""><div class="artistItem">
-            <h1>Artist Name</h1>
-            <h2>Artist's home town</h2>
-            <div class="artistMask"></div>
-            <div class="artistImage"></div>
-        </div></a>{{-- 
-         --}}<a href=""><div class="artistItem">
-            <h1>Artist Name</h1>
-            <h2>Artist's home town</h2>
-            <div class="artistMask"></div>
-            <div class="artistImage"></div>
-        </div></a>{{-- 
-         --}}<a href=""><div class="artistItem">
-            <h1>Artist Name</h1>
-            <h2>Artist's home town</h2>
-            <div class="artistMask"></div>
-            <div class="artistImage"></div>
-        </div></a>{{-- 
-         --}}<a href=""><div class="artistItem">
-            <h1>Artist Name</h1>
-            <h2>Artist's home town</h2>
-            <div class="artistMask"></div>
-            <div class="artistImage"></div>
-        </div></a>{{-- 
-         --}}<a href=""><div class="artistItem">
-            <h1>Artist Name</h1>
-            <h2>Artist's home town</h2>
-            <div class="artistMask"></div>
-            <div class="artistImage"></div>
-        </div></a>@if(Auth::check())
+        @if(Auth::check())
         {{-- 
 
          --}}<a href="./artists/add"><div class="artistItem addArtist">
