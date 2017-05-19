@@ -83,7 +83,7 @@ class EventsController extends Controller
             $value->date = $value->date->toDayDateTimeString();
         };
         
-        // Array containing only sorted past events! woop woop.
+        // Array containing only sorted past events.
 
         return view('events.past', compact('past'));
     }
@@ -114,32 +114,11 @@ class EventsController extends Controller
         }
 
         ini_set('memory_limit', '512M');
-        // var_dump(request('name'));
-        // echo "<br>";
-        // var_dump(request('date'));
-        // echo "<br>";
-        // var_dump(request('description'));
-        // echo "<br>";
-        // var_dump(request('location'));
-        // echo "<br>";
-        // var_dump(request('locationSearch'));
-        // echo "<br>";
-        // var_dump(request('image'));
-        // echo "<br>";
-        // var_dump(request('images'));
-        // echo "<br>";
-        // var_dump(request('video'));
-        // echo "<br>";
-        // var_dump(request('price'));
-        // echo "<br>";
-        // var_dump(request('tickets'));
-        // echo "<br>";
 
         $Event = new Event;
 
         $Event->name = request('name');
 
-        // $carbonDate Carbon::createFromFormat('m/d/Y H:M', '05/31/2017 10:53 PM')->toDateTimeString()
         $carbonDate = Carbon::parse(request('date'));
         $Event->date = $carbonDate;
 
@@ -149,8 +128,6 @@ class EventsController extends Controller
 
         $Event->location_id = request('location');
 
-        
-        
         $img = Image::make(request('image'));
         $img->resize(1000, null, function ($constraint) {
             $constraint->aspectRatio();
@@ -164,7 +141,6 @@ class EventsController extends Controller
         $images = "";
         if (request('images')) {
             foreach (request('images') as $image) {
-                // var_dump($image);
 
                 $img = Image::make($image);
                 $img->resize(2000, null, function ($constraint) {
@@ -219,8 +195,6 @@ class EventsController extends Controller
 
         $event->date = $event->date->toDayDateTimeString();
 
-        // $record->html = substr($record->html, 0, 1);
-        // $record->html = substr($record->html, 0, -1);
         if($event->images_array){
             $imagesArray = array();
             if(str_contains($event->images_array, ",!")){
@@ -239,9 +213,6 @@ class EventsController extends Controller
             }
             $event->video_url = $videoArray;
         }
-
-        // var_dump($value);
-        // echo "<br>---<br>";
 
         return view('events.show', compact('event'));
     }
@@ -291,7 +262,6 @@ class EventsController extends Controller
 
         $Event->name = request('name');
 
-        // $carbonDate Carbon::createFromFormat('m/d/Y H:M', '05/31/2017 10:53 PM')->toDateTimeString()
         $carbonDate = Carbon::parse(request('date'));
         $Event->date = $carbonDate;
 
@@ -316,7 +286,6 @@ class EventsController extends Controller
         $images = "";
         if (request('images')) {
             foreach (request('images') as $image) {
-                // var_dump($image);
 
                 $img = Image::make($image);
                 $img->resize(2000, null, function ($constraint) {

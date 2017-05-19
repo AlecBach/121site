@@ -11,13 +11,6 @@
 |
 */
 
-// Route::get('/', function () { return view('index'); });
-
-// Route::get('/upcoming', function () { return view('index'); });
-
-// Route::get('/past', function () { return view('index'); });
-
-// Route::get('/artists', function () { return view('index'); });
 use Illuminate\Support\Facades\Auth;
 
 
@@ -57,27 +50,6 @@ Route::get('/artists/delete/{artist}', 'ArtistsController@destroy');
 
 Route::get('/artists/{artist}', 'ArtistsController@show');
 
-// Route::get('/artists', function(){
-
-// 	$artists = App\Artist::all();
-
-// 	return view('artists', compact('artists'));
-
-// });
-
-// Route::get('/artists/add', function(){
-
-// 	if (Auth::check()) {
-
-// 		return view('addArtist');
-
-// 	}else{
-// 		return redirect('/');
-// 	}
-
-
-// });
-
 Route::get('/login', 'HomeController@index');
 
 Route::get('/logout', function(){
@@ -89,16 +61,9 @@ Route::get('/logout', function(){
 
 Route::get('/home', function(){ return redirect('/'); });
 
-// Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-
-// // Registration Routes...
-// Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-// Route::post('register', 'Auth\RegisterController@register');
-
-// Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');

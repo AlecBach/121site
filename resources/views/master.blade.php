@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="keywords" content="121 onetwoone music events nz new zealand rave">
+        <meta name="description" content="Check out rave and rock parties around New Zealand.">
 
         <title>121 - @yield('title')</title>
 
@@ -42,7 +44,7 @@
     <body>
         <div id="navBar" class="navScrolled static">
             <div class="center">
-                <a href="/"><div id="logo" class="logoScrolled">
+                <a href="/" accesskey="h"><div id="logo" class="logoScrolled">
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          viewBox="0 0 1000 820" style="enable-background:new 0 0 1000 820;" xml:space="preserve">
                     <style type="text/css">
@@ -57,9 +59,9 @@
                 </div></a>
                 <div id="nav">
                     <ul>
-                        <li><a href="/upcoming" class="{{ Request::is('upcoming*') ? 'active' : '' }}">UPCOMING</a></li>
-                        <li><a href="/past" class="{{ Request::is('past*') ? 'active' : '' }}">PAST</a></li>
-                        <li><a href="/artists" class="{{ Request::is('artists*') ? 'active' : '' }}">ARTISTS</a></li>
+                        <li><a href="/upcoming" accesskey="u" class="{{ Request::is('upcoming*') ? 'active' : '' }}">UPCOMING</a></li>
+                        <li><a href="/past" accesskey="p" class="{{ Request::is('past*') ? 'active' : '' }}">PAST</a></li>
+                        <li><a href="/artists" accesskey="a" class="{{ Request::is('artists*') ? 'active' : '' }}">ARTISTS</a></li>
                     </ul>
                     <div class="burger">
                         <div></div><div></div><div></div>
@@ -76,7 +78,7 @@
                     <li id="closeMenu"><div class="closeMenu"><div id="firstline"></div><div id="secondline"></div></div></li>
                     <a href="/"><li class="@if(Route::getCurrentRoute()->uri() == '/'){{'active'}}@endif">
                         <div id="logo" class="logoMobileNav">
-                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              viewBox="0 0 1000 820" style="enable-background:new 0 0 1000 820;" xml:space="preserve">
                         <style type="text/css">
                             .st0{stroke:#000000;stroke-width:60;stroke-miterlimit:10;}

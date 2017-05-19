@@ -20,7 +20,6 @@ html{
 }
 #navBar{
 	width: 100%;
-	// height: 200px;
 	position: fixed;
 	top: 0;
 	padding-top: 40px;
@@ -35,7 +34,6 @@ html{
 		justify-content:space-between;
 
 		>div{
-			// display: inline-block;
 			ul{
 				display:none;
 				list-style: none;
@@ -151,17 +149,6 @@ html{
 					padding: 0 !important;
 					margin: 0 auto;
 				}
-				// .logoIcon{
-				// 	background-image: url(../logoWhite.png);
-				// 	height:34px;
-				// 	width: 34px;
-				// 	background-size: contain;
-				// 	background-position: center;
-				// 	background-repeat: no-repeat;
-				// 	margin: 0 auto;
-				// }
-				
-
 				.closeMenu{
 					position: relative;
 					height: 24px;
@@ -186,10 +173,6 @@ html{
 			.active{
 				background-color: #202020;
 			}
-			// li:hover .st0, li:hover path {
-			//     stroke: yellow;
-			//     fill: yellow;
-			// }
 			li:hover{
 				background-color: #252525;
 				.closeMenu div{
@@ -394,7 +377,6 @@ html{
 	position: relative;
 	.galleryImgPrvw{
 		width: 100%;
-		// position: relative;
 	}
 	.deleteGallBtn{
 	    display: inline-block;
@@ -539,19 +521,10 @@ html{
 	position: fixed;
 	bottom: 0;
 	left: 0;
-	.footerquarter{
-		// height: 65px;
-	}
 }
 #staticFooter{
 	height: 200px;
-	// position: fixed;
-	// bottom: 0;
-	// left: 0;
 	z-index:1;
-	.footerquarter{
-		// height: 200px;
-	}
 }
 .container{
 	margin: 60px auto;
@@ -649,7 +622,6 @@ html{
 	width:100%;
 	.artistItem{
 		width:100%;
-		// margin: 40px 0;
 		.half{
 			width:100%;
 			display:block;
@@ -755,6 +727,7 @@ html{
 }
 .upcomingBG, .pastBG{
 	background-image: url(../imgs/events/pinkdust.png);
+	background-size: 400px 400px;
 	.center{
 		position: relative;
 		.createEvent{
@@ -945,13 +918,11 @@ html{
 		.artistItem{
 			height:350px;
 			display:flex;
-			// display:inline-flex;
 			justify-content: center;
 			flex-direction: row;
 			.half{
 				align-self:center;
 				width:50%;
-				// height: 100%;
 				display:inline-block;
 				float: left;
 				.artistImage{
@@ -960,9 +931,6 @@ html{
 				}
 			}
 			.right{
-				// display:inline-flex;
-				// justify-content: center;
-				// flex-direction: column;
 				.txtCnt{
 					margin-top: 0;
 					padding-left: 10px;
