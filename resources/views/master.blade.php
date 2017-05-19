@@ -179,7 +179,7 @@
             </div>
         </div>
         <div class="footer" id="floatingFooter">
-            <div class="footerquarter{{ Auth::check() ? ' adminBtn' : '' }}" id="quarter1">@if(Auth::check())<div id="adminBtnTxt">ADMIN</div><div class="adminOuter"> <div class="adminCont"><a href="/events/add">Add Event</a><a href="/artists/add">Add Artist</a></div></div>@endif</div><div class="footerquarter" id="quarter2"></div><div class="footerquarter" id="quarter3"></div><div class="footerquarter" id="quarter4"><a href="#contact"><i class="fa fa-envelope"></i></a></div>
+            <div class="footerquarter{{ Auth::check() ? ' adminBtn' : '' }}" id="quarter1">@if(Auth::check())<div id="adminBtnTxt">ADMIN</div><div class="adminOuter"> <div class="adminCont"><a href="/events/add">Add Event</a><a href="/artists/add">Add Artist</a></div></div>@endif</div><div class="footerquarter" id="quarter2"></div><div class="footerquarter" id="quarter3"></div><div class="footerquarter" id="quarter4"><a href="#contact" accesskey="c"><i class="fa fa-envelope"></i></a></div>
         </div>
         <div class="footer" id="staticFooter">
             <div class="footerquarter" id="quarter1"></div><div class="footerquarter" id="quarter2"></div><div class="footerquarter" id="quarter3"></div><div class="footerquarter" id="quarter4"></div>
