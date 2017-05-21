@@ -44,7 +44,7 @@
     <body>
         <div id="navBar" class="navScrolled static">
             <div class="center">
-                <a href="/" accesskey="h"><div id="logo" class="logoScrolled">
+                <a href="/" accesskey="h"><div class="logo logoScrolled">
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          viewBox="0 0 1000 820" style="enable-background:new 0 0 1000 820;" xml:space="preserve">
                     <style type="text/css">
@@ -76,8 +76,8 @@
             <div class="menu">
                 <ul id="navList" class="navListScroll">
                     <li id="closeMenu"><div class="closeMenu"><div id="firstline"></div><div id="secondline"></div></div></li>
-                    <a href="/"><li class="@if(Route::getCurrentRoute()->uri() == '/'){{'active'}}@endif">
-                        <div id="logo" class="logoMobileNav">
+                    <li class="@if(Route::getCurrentRoute()->uri() == '/'){{'active'}}@endif"><a href="/">
+                        <div class="logo logoMobileNav">
                         <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              viewBox="0 0 1000 820" style="enable-background:new 0 0 1000 820;" xml:space="preserve">
                         <style type="text/css">
@@ -90,10 +90,10 @@
                         <line class="st0" x1="6.1" y1="462.8" x2="994.6" y2="462.8"/>
                         </svg>
                     </div>
-                    </li></a>
-                    <a href="/upcoming"><li class="{{ Request::is('upcoming*') ? 'active' : '' }}">UPCOMING</li></a>
-                    <a href="/past"><li class="{{ Request::is('past*') ? 'active' : '' }}">PAST</li></a>
-                    <a href="/artists"><li class="{{ Request::is('artists*') ? 'active' : '' }}">ARTISTS</li></a>
+                    </a></li>
+                    <li class="{{ Request::is('upcoming*') ? 'active' : '' }}"><a href="/upcoming">UPCOMING</a></li>
+                    <li class="{{ Request::is('past*') ? 'active' : '' }}"><a href="/past">PAST</a></li>
+                    <li class="{{ Request::is('artists*') ? 'active' : '' }}"><a href="/artists">ARTISTS</a></li>
                     <li id="mobileContact"><i class="fa fa-envelope"></i></li>
                 </ul>
             </div>
@@ -153,7 +153,7 @@
                             <label for="message" class="col-md-4 control-label">Message</label>
 
                             <div class="col-md-6">
-                                <textarea id="message" type="text" class="form-control" name="message" rows="5" required>{{ old('message') }}</textarea>
+                                <textarea id="message" class="form-control" name="message" rows="5" required>{{ old('message') }}</textarea>
 
                                 @if ($errors->has('message'))
                                     <span class="help-block">
@@ -179,10 +179,10 @@
             </div>
         </div>
         <div class="footer" id="floatingFooter">
-            <div class="footerquarter{{ Auth::check() ? ' adminBtn' : '' }}" id="quarter1">@if(Auth::check())<div id="adminBtnTxt">ADMIN</div><div class="adminOuter"> <div class="adminCont"><a href="/events/add">Add Event</a><a href="/artists/add">Add Artist</a></div></div>@endif</div><div class="footerquarter" id="quarter2"></div><div class="footerquarter" id="quarter3"></div><div class="footerquarter" id="quarter4"><a href="#contact" accesskey="c"><i class="fa fa-envelope"></i></a></div>
+            <div class="footerquarter{{ Auth::check() ? ' adminBtn' : '' }} quarter1">@if(Auth::check())<div id="adminBtnTxt">ADMIN</div><div class="adminOuter"> <div class="adminCont"><a href="/events/add">Add Event</a><a href="/artists/add">Add Artist</a></div></div>@endif</div><div class="footerquarter quarter2"></div><div class="footerquarter quarter3"></div><div class="footerquarter quarter4"><a href="#contact" accesskey="c"><i class="fa fa-envelope"></i></a></div>
         </div>
         <div class="footer" id="staticFooter">
-            <div class="footerquarter" id="quarter1"></div><div class="footerquarter" id="quarter2"></div><div class="footerquarter" id="quarter3"></div><div class="footerquarter" id="quarter4"></div>
+            <div class="footerquarter quarter1"></div><div class="footerquarter quarter2"></div><div class="footerquarter quarter3"></div><div class="footerquarter quarter4"></div>
         </div>
         <div id="pageID">@yield('pageID')</div>
         <div id="getVH"></div>

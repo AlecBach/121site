@@ -117,13 +117,16 @@ html{
 			transition: padding-top 0.5s;
 			#closeMenu{
 				border-top:1px solid #3c3c3c;
+				padding: 12px;
 			}
 			#closeMenu{
 				cursor:pointer;
 			}
 			a{
-					color: white;
-					transition: color ease-in-out 0.3s;
+				color: white;
+				transition: color ease-in-out 0.3s;
+				display: block;
+				padding: 12px;
 			}
 			a:hover{
 				color: yellow;
@@ -136,13 +139,14 @@ html{
 				font-family: montserrat;
 				font-size: 1.4rem;
 				font-weight: 800;
-				padding: 12px;
+				// padding: 12px;
 				transition: background-color ease-in-out 0.3s;
 				border-bottom: 1px solid #3c3c3c;
 				i{
 					font-size: 1.6rem;
 					color: white;
 					transition: color 0.3s;
+					padding: 12px;
 				}
 				.logoMobileNav{
 					width: 32px !important;
@@ -154,6 +158,7 @@ html{
 					height: 24px;
 					cursor: pointer;
 					width: 26px;
+					padding: 12px;
 					margin: 0 auto;
 					div{
 						position: absolute;
@@ -225,7 +230,7 @@ html{
 	width: 90%;
 	margin: 0 auto;
 }
-#logo{
+.logo{
 	width: 150px;
 	transition: width 0.5s;
 	padding: 15px 0;
@@ -238,7 +243,7 @@ html{
 		transition: stroke 0.3s, fill 0.3s;
 	}
 }
-#logo:hover {
+.logo:hover {
 	.st0, path{
 		stroke: yellow;
 		fill: yellow;
@@ -336,7 +341,7 @@ html{
 					background-image: url(../imgs/001-microphone.png);
 				}
 				.icon{
-					background-repeat: none;
+					background-repeat: no-repeat;
 					background-size: contain;
 					background-position: center;
 					height: 124px;
@@ -395,7 +400,7 @@ html{
 	}
 }
 #slider-container{
-	overflow: none;
+	overflow: hidden;
 	width: 100vw;
 	height: 100vh;
 	position: relative;
@@ -437,9 +442,9 @@ html{
 		margin: 0;
 		box-sizing: border-box;
 	}
-	#quarter2.footerquarter{background-color: rgb(22,22,22);}
-	#quarter3.footerquarter{background-color: rgb(30,30,30);}
-	#quarter4.footerquarter{background-color: rgb(45,45,45);}
+	.quarter2.footerquarter{background-color: rgb(22,22,22);}
+	.quarter3.footerquarter{background-color: rgb(30,30,30);}
+	.quarter4.footerquarter{background-color: rgb(45,45,45);}
 	i{
 		
 		font-size: 30px;
@@ -916,7 +921,7 @@ html{
 	#artistShow{
 
 		.artistItem{
-			height:350px;
+			min-height:350px;
 			display:flex;
 			justify-content: center;
 			flex-direction: row;
@@ -1019,7 +1024,7 @@ html{
 	}
 	#artistShow{
 		.artistItem{
-			height: 500px;
+			min-height: 500px;
 			.half{
 				.artistImage{
 					width:500px;

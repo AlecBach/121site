@@ -39,7 +39,7 @@
 				<div class="galleria">
 					@if($event->images_array)
 						@foreach($event->images_array as $image)
-							<img src="..{{$image}}">
+							<img src="..{{$image}}" alt="{{$image}}">
 						@endforeach
 					@endif
 					@if($event->video_url)
